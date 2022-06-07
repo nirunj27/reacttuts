@@ -6,17 +6,10 @@ import Createtask from "./Pages/task/Createtask.jsx";
 import ViewTask from "./Pages/task/ViewTask.jsx";
 import Edittask from "./Pages/task/Edittask.jsx";
 import Jokes from "./Pages/jokes/Jokes.jsx";
-import { useSelector, useDispatch } from "react-redux";
-import { getJokes } from "./Pages/jokes/features/jokeSlice";
-import CircularProgress from "@material-ui/core/CircularProgress";
+
 
 const App = () => {
-  // const dispatch = useDispatch();
-  // const {jokes,loading} = useSelector((state)=>state.joke)
-
-  // useEffect(()=>{
-  //   dispatch(getJokes())
-  // },[])
+ 
   return (
     <div>
       <Router>
