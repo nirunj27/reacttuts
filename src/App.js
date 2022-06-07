@@ -12,8 +12,10 @@ const App = () => {
  
   return (
     <div>
+        <h2>Task Management</h2>
       <Router>
         <Routes>
+          <Route path="/" element={<App/>}></Route>
           <Route path="/login" element={<Login />}></Route>
 
           <Route path="/createtask" element={<Createtask />}></Route>
