@@ -53,7 +53,6 @@ const Jokes = () => {
     marginBottom: "20px",
   };
 
-  
   useEffect(() => {
     if (!localStorage.getItem("credauth")) {
       navigate("/login");
@@ -78,14 +77,20 @@ const Jokes = () => {
           </TableHead>
           <TableBody>
             {!loading ? (
-              <TableRow align="center">
-                <TableCell component="th" scope="row"  style={{fontFamily:"'Bangers', cursive"}}>
-                  Category
-                </TableCell>
-                <TableCell  style={{fontFamily:"'Bangers', cursive"}}>
-                  Jokes
-                </TableCell>
-              </TableRow>
+              Object.keys(jokes).map((item,i) => (
+                <TableRow align="center" key={i}>
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    style={{ fontFamily: "'Bangers', cursive" }}
+                  >
+                    {jokes[item].category}
+                  </TableCell>
+                  <TableCell style={{ fontFamily: "'Bangers', cursive" }}>
+                    {jokes[item].jokes}
+                  </TableCell>
+                </TableRow>
+              ))
             ) : (
               <div style={loaderstyle}>
                 <CircularProgress color="secondary" />
