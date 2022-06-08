@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,Link } from "react-router-dom";
 import Login from "./Pages/login/Login.jsx";
 import "./App.css";
 import Createtask from "./Pages/task/Createtask.jsx";
@@ -13,17 +13,19 @@ const App = () => {
   
   return (
     <div className="App">
-    <h2>login routes - /login</h2>
-    <h2>create task routes - /createtask</h2>
-    <h2>edit task routes - /edittask</h2>
-    <h2>view task routes - /viewtask</h2>
-    <h2>jokes routes - /jokesspot</h2>
+    
 
       <Router>
+        <navbar>
+          <Link to="/login">login</Link>
+          <Link to="/createtask">Createtask</Link>
+          <Link to="/viewtask">Viewtask</Link>
+          <Link to="/jokesspot">jokesspot</Link>
+        </navbar>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/jokesspot" element={<Jokes/>}></Route>
-          <Route path="/" element={<h2>Task Management</h2>}></Route>
+          <Route path="/" element={<h2 style={{textAlign:"center"}}>Task Management</h2>}></Route>
 
           <Route path="/createtask" element={<Createtask />}></Route>
           <Route path="/viewtask" element={<ViewTask />}></Route>
