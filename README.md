@@ -17,5 +17,4 @@ public routes
 private routes
 /createtask
 /viewtask
-/edittask
 /jokesspot
