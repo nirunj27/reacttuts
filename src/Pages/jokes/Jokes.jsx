@@ -20,8 +20,10 @@ const useStyles = makeStyles({
 
 const Jokes = () => {
   const { jokes, loading } = useSelector((state) => state.joke);
-  console.log(jokes);
-  console.log(loading);
+//   console.log(jokes);
+//   console.log(loading);
+//   console.log(Object.values(jokes));
+//   console.log(typeof Object.keys(jokes));
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -63,8 +65,8 @@ const Jokes = () => {
   }, []);
 
   const tablefontstyle = {
-    fontFamily: "'Bangers', cursive"
-  }
+    fontFamily: "'Bangers', cursive",
+  };
 
   return (
     <Paper elevation={10} style={paperStyle}>
@@ -82,24 +84,35 @@ const Jokes = () => {
           </TableHead>
           <TableBody>
             {!loading ? (
-              Object.keys(jokes).map((item,i) => (
-                <TableRow align="center" key={i}>
-                  <TableCell
-                    component="th"
-                    scope="row"
-                    style={tablefontstyle}
-                  >
-                    {jokes[item].category}
-                  </TableCell>
-                  <TableCell style={tablefontstyle}>
-                    {jokes[item].jokes}
-                  </TableCell>
-                </TableRow>
-              ))
+              Object.values(jokes).map((item, i) => {
+                  console.log(typeof(item))
+                  console.log(item)
+                if (typeof(item) == "object") {
+                  item.map((jok, j) => (
+                    <TableRow align="center" key={j}>
+                      <TableCell
+                        component="th"
+                        scope="row"
+                        style={tablefontstyle}
+                      >
+                        {jok.category}
+                      </TableCell>
+                      <TableCell style={tablefontstyle}>{jok.joke}</TableCell>
+                    </TableRow>
+                  ));
+                }
+              })
             ) : (
-              <div style={loaderstyle}>
-                <CircularProgress color="secondary" />
-              </div>
+                <TableRow align="center">
+                <TableCell
+                  component="th"
+                  scope="row"
+                  style={tablefontstyle}
+                >
+                  not category found
+                </TableCell>
+                <TableCell style={tablefontstyle}>no jokes</TableCell>
+              </TableRow>
             )}
           </TableBody>
         </Table>
