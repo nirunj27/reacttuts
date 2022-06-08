@@ -6,6 +6,7 @@ import Createtask from "./Pages/task/Createtask.jsx";
 import ViewTask from "./Pages/task/ViewTask.jsx";
 import Edittask from "./Pages/task/Edittask.jsx";
 import Jokes from "./Pages/jokes/Jokes.jsx";
+import "./App.css"
 
 
 const App = () => {
