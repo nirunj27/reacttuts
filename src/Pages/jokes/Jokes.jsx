@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 const Jokes = () => {
   const { jokes, loading } = useSelector((state) => state.joke);
   console.log(jokes);
+  console.log(loading);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -59,7 +60,11 @@ const Jokes = () => {
     } else {
       dispatch(getJokes());
     }
-  }, [dispatch]);
+  }, []);
+
+  const tablefontstyle = {
+    fontFamily: "'Bangers', cursive"
+  }
 
   return (
     <Paper elevation={10} style={paperStyle}>
@@ -71,8 +76,8 @@ const Jokes = () => {
         <Table className={classes.table} aria-label="simple table">
           <TableHead style={tableheadStyle}>
             <TableRow align="center">
-              <TableCell>Category</TableCell>
-              <TableCell>Jokes</TableCell>
+              <TableCell style={tablefontstyle}>Category</TableCell>
+              <TableCell style={tablefontstyle}>Jokes</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -82,11 +87,11 @@ const Jokes = () => {
                   <TableCell
                     component="th"
                     scope="row"
-                    style={{ fontFamily: "'Bangers', cursive" }}
+                    style={tablefontstyle}
                   >
                     {jokes[item].category}
                   </TableCell>
-                  <TableCell style={{ fontFamily: "'Bangers', cursive" }}>
+                  <TableCell style={tablefontstyle}>
                     {jokes[item].jokes}
                   </TableCell>
                 </TableRow>
