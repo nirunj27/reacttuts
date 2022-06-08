@@ -11,8 +11,14 @@ import Jokes from "./Pages/jokes/Jokes.jsx";
 const App = () => {
  
   return (
-    <div>
+    <div className="App">
         <h2>Task Management</h2>
+         
+        <h2>login routes - /login</h2>
+        <h2>create task routes - /createtask</h2>
+        <h2>edit task routes - /edittask</h2>
+        <h2>view task routes - /viewtask</h2>
+        <h2>jokes routes - /jokesspot</h2>
       <Router>
         <Routes>
           <Route path="/" element={<h2>Task Management<h2/>}></Route>
