@@ -3,9 +3,10 @@ import axios from "axios"
 
 
 export const getJokes = createAsyncThunk('Jokes/getJokes',async () =>{
-    return  axios.get("https://v2.jokeapi.dev/joke/any?format=json&blacklistFlags=nsfw,sexist&type=single&lang=EN&amount=10").then((res)=>{
-        console.log(res.data)
-     })
+    return  axios.get("https://v2.jokeapi.dev/joke/any?format=json&blacklistFlags=nsfw,sexist&type=single&lang=EN&amount=10").then((res)=>
+            res.data                                                                                                                       
+        //console.log(res.data)
+     )
 })
 
 
