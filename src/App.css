@@ -3,7 +3,7 @@
     padding:0;
 }
 
-.App {
-    text-align:center;
-   
+navbar {
+    display:flex;
+    justify-content: space-evenly;
 }
