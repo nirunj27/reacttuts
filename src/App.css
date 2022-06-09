@@ -3,7 +3,7 @@
     padding:0;
 }
 
-navbar {
+nav {
     display:flex;
     justify-content: space-evenly;
 }
