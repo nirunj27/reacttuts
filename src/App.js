@@ -16,12 +16,12 @@ const App = () => {
     
 
       <Router>
-        <navbar>
+        <nav>
           <Link to="/login">login</Link>
           <Link to="/createtask">Createtask</Link>
           <Link to="/viewtask">Viewtask</Link>
           <Link to="/jokesspot">jokesspot</Link>
-        </navbar>
+        </nav>
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/jokesspot" element={<Jokes/>}></Route>
