@@ -20,10 +20,11 @@ const useStyles = makeStyles({
 
 const Jokes = () => {
   const { jokes, loading } = useSelector((state) => state.joke);
-//   console.log(jokes);
-//   console.log(loading);
-//   console.log(Object.values(jokes));
-//   console.log(typeof Object.keys(jokes));
+  console.log(typeof jokes);
+  console.log(jokes);
+  //   console.log(loading);
+  //   console.log(Object.values(jokes));
+  //   console.log(typeof Object.keys(jokes));
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -39,7 +40,8 @@ const Jokes = () => {
   const loaderstyle = {
     display: "flex",
     justifyContent: "center",
-    marginTop: "200px",
+    marginTop: "250px",
+    alignItems:"center"
   };
 
   const tableheadStyle = {
@@ -74,49 +76,42 @@ const Jokes = () => {
         <h3>View Jokes</h3>
       </div>
 
-      <TableContainer>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead style={tableheadStyle}>
-            <TableRow align="center">
-              <TableCell style={tablefontstyle}>Category</TableCell>
-              <TableCell style={tablefontstyle}>Jokes</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {!loading ? (
-              Object.values(jokes).map((item, i) => {
-                  console.log(typeof(item))
-                  console.log(item)
-                if (typeof(item) == "object") {
-                  item.map((jok, j) => (
-                    <TableRow align="center" key={j}>
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        style={tablefontstyle}
-                      >
-                        {jok.category}
-                      </TableCell>
-                      <TableCell style={tablefontstyle}>{jok.joke}</TableCell>
-                    </TableRow>
-                  ));
-                }
-              })
-            ) : (
-                <TableRow align="center">
-                <TableCell
-                  component="th"
-                  scope="row"
-                  style={tablefontstyle}
-                >
-                  not category found
-                </TableCell>
-                <TableCell style={tablefontstyle}>no jokes</TableCell>
+      {
+         !loading?(<TableContainer>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead style={tableheadStyle}>
+              <TableRow align="center">
+                <TableCell style={tablefontstyle}>Category</TableCell>
+                <TableCell style={tablefontstyle}>Jokes</TableCell>
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {Object.keys(jokes).map((item, i) => {
+                // console.log(item);
+                // console.log(typeof item[2]);
+  
+                if (item === "jokes") {
+                  return (
+                    <TableRow align="center">
+                      <TableCell style={tablefontstyle}>
+                        {jokes[item][i].category}
+                      </TableCell>
+                      <TableCell style={tablefontstyle}>
+                        {jokes[item][i].joke}
+                      </TableCell>
+                    </TableRow>
+                  );
+                  // });
+                }
+  
+                //  })
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>):(<CircularProgress style={loaderstyle}></CircularProgress>)
+      }
+
+      
     </Paper>
   );
 };
