@@ -38,10 +38,9 @@ const Jokes = () => {
   };
 
   const loaderstyle = {
+    marginTop: "200px",
     display: "flex",
-    justifyContent: "center",
-    marginTop: "250px",
-    alignItems:"center"
+    justifyContent:"center"
   };
 
   const tableheadStyle = {
@@ -108,7 +107,7 @@ const Jokes = () => {
               })}
             </TableBody>
           </Table>
-        </TableContainer>):(<CircularProgress style={loaderstyle}></CircularProgress>)
+        </TableContainer>):(<div style={loaderstyle}><CircularProgress></CircularProgress></div>)
       }
 
       
