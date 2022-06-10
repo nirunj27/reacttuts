@@ -40,7 +40,7 @@ const Jokes = () => {
   const loaderstyle = {
     marginTop: "200px",
     display: "flex",
-    justifyContent: "center",
+    justifyContent:"center"
   };
 
   const tableheadStyle = {
@@ -75,8 +75,8 @@ const Jokes = () => {
         <h3>View Jokes</h3>
       </div>
 
-      {!loading ? (
-        <TableContainer>
+      {
+         !loading?(<TableContainer>
           <Table className={classes.table} aria-label="simple table">
             <TableHead style={tableheadStyle}>
               <TableRow align="center">
@@ -85,26 +85,32 @@ const Jokes = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {jokes.jokes.map((item) => {
-                return (
-                  <>
+              {Object.keys(jokes).map((item, i) => {
+                // console.log(item);
+                // console.log(typeof item[2]);
+  
+                if (item === "jokes") {
+                  return (
                     <TableRow align="center">
                       <TableCell style={tablefontstyle}>
-                        {item.category}
+                        {jokes[item][i].category}
                       </TableCell>
-                      <TableCell style={tablefontstyle}>{item.joke}</TableCell>
+                      <TableCell style={tablefontstyle}>
+                        {jokes[item][i].joke}
+                      </TableCell>
                     </TableRow>
-                  </>
-                );
+                  );
+                  // });
+                }
+  
+                //  })
               })}
             </TableBody>
           </Table>
-        </TableContainer>
-      ) : (
-        <div style={loaderstyle}>
-          <CircularProgress></CircularProgress>
-        </div>
-      )}
+        </TableContainer>):(<div style={loaderstyle}><CircularProgress></CircularProgress></div>)
+      }
+
+      
     </Paper>
   );
 };
