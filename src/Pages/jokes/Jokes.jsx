@@ -22,6 +22,7 @@ const Jokes = () => {
   const { jokes, loading } = useSelector((state) => state.joke);
   console.log(typeof jokes);
   console.log(jokes);
+  console.log(Array.isArray(jokes))
   //   console.log(loading);
   //   console.log(Object.values(jokes));
   //   console.log(typeof Object.keys(jokes));
@@ -75,7 +76,7 @@ const Jokes = () => {
         <h3>View Jokes</h3>
       </div>
 
-      {!loading && jokes.length !== "" ? (
+      {!loading && Array.isArray(jokes) == false ? (
         <TableContainer>
           <Table className={classes.table} aria-label="simple table">
             <TableHead style={tableheadStyle}>
